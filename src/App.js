@@ -21,21 +21,29 @@ export default class App extends Component {
     }
   }
 
-  todoData = [{
-    id: "1",
-    title: "공부하기",
-    completed: false,
-  },
-  {
-    id: "2",
-    title: "청소하기",
-    completed: true
+  state = {
+
+    todoData:
+      [{
+        id: "1",
+        title: "공부하기",
+        completed: false,
+      },
+      {
+        id: "2",
+        title: "청소하기",
+        completed: true
+      }
+      ],
+
+    value: ""
   }
-  ]
+
 
   handleClick = (id) => {
-    let newTodoData = this.todoData.filter(data => data.id !== id);
+    let newTodoData = this.state.todoData.filter(data => data.id !== id);
     console.log(" newTodoData : ", newTodoData);
+    this.setState({ todoData: newTodoData });
   }
 
 
@@ -47,7 +55,7 @@ export default class App extends Component {
             <h1>할일 목록</h1>
           </div>
 
-          {this.todoData.map(data => {
+          {this.state.todoData.map(data => {
             return (
               <div style={this.getStyle()} key={data.id}>
                 <input type="checkbox" defaultChecked={data.completed} />
