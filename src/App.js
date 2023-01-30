@@ -12,11 +12,11 @@ export default class App extends Component {
     float: "right"
   }
 
-  getStyle = () => {
+  getStyle = (completed) => {
     return {
       padding: "10px",
       borderBottom: "1px #ccc dotted",
-      textDecoration: "none"
+      textDecoration: completed ? "line-through" : "none"
 
     }
   }
@@ -53,7 +53,6 @@ export default class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    
     let newTodoData = {
       id: Date.now(),
       title: this.state.value,
@@ -61,7 +60,18 @@ export default class App extends Component {
     }
 
     this.setState({ todoData: [...this.state.todoData, newTodoData], value: "" })
+  }
 
+
+  handleCompleteChange = (id) => {
+    let newTodoData = this.state.todoData.map(data => {
+      if (data.id === id) {
+        data.completed = !data.completed
+      }
+      return data;
+    });
+
+    this.setState({ todoData: newTodoData })
   }
 
   render() {
@@ -95,8 +105,8 @@ export default class App extends Component {
 
           {this.state.todoData.map(data => {
             return (
-              <div style={this.getStyle()} key={data.id}>
-                <input type="checkbox" defaultChecked={data.completed} />
+              <div style={this.getStyle(data.completed)} key={data.id}>
+                <input type="checkbox" defaultChecked={data.completed} onChange={() => this.handleCompleteChange(data.id)} />
                 {data.title}
                 <button style={this.btnStyle} onClick={() => this.handleClick(data.id)}>x</button>
               </div>
