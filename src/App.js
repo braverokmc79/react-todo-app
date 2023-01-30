@@ -46,6 +46,23 @@ export default class App extends Component {
     this.setState({ todoData: newTodoData });
   }
 
+  handleChnage = (e) => {
+    console.log(" e  :", e.target.value);
+    this.setState({ value: e.target.value })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    
+    let newTodoData = {
+      id: Date.now(),
+      title: this.state.value,
+      completed: false
+    }
+
+    this.setState({ todoData: [...this.state.todoData, newTodoData], value: "" })
+
+  }
 
   render() {
     return (
@@ -54,6 +71,27 @@ export default class App extends Component {
           <div className="title">
             <h1>할일 목록</h1>
           </div>
+
+          <form style={{ display: 'flex' }} onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              name="value"
+              style={{ flex: "10", padding: "5px" }}
+              placeholder="해야 할일을 입력 하세요."
+              value={this.state.value}
+              onChange={this.handleChnage}
+            />
+
+            <input
+              type="submit"
+              name="입력"
+              className="btn"
+              style={{ flex: '1' }}
+
+            />
+          </form>
+
+
 
           {this.state.todoData.map(data => {
             return (
