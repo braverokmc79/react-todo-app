@@ -10,7 +10,7 @@ export default function App() {
   return (
     <div className="container" >
       <div className="todoBlock">
-        <div className="title">
+        <div className="text-3xl  py-6 font-bold underline">
           <h1>할일 목록</h1>
         </div>
 
@@ -21,6 +21,5 @@ export default function App() {
       </div>
     </div >
   )
-
 
 }

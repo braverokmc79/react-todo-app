@@ -23,6 +23,7 @@ const Form = ({ setTodoData }) => {
         <>
             <form style={{ display: 'flex' }} onSubmit={handleSubmit}>
                 <input
+                    className="border-2 border-gray-400"
                     type="text"
                     name="value"
                     style={{ flex: "10", padding: "5px" }}
