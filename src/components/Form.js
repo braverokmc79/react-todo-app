@@ -34,7 +34,8 @@ const Form = ({ todoData, setTodoData }) => {
                 />
 
                 <input
-                    className='p-2 text-blue-400 border-2 border-blue-400 rounded hover:text-white hover:bg-blue-20'
+                    className='p-2 text-blue-400 border-2 border-blue-400 rounded hover:text-white
+                     hover:bg-blue-400 hover:cursor-pointer'
                     type="submit"
                     value="입력"
                 />

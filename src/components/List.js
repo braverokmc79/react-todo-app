@@ -26,7 +26,6 @@ const List = React.memo(({ id, completed, title, todoData, setTodoData, provided
 
 
     const handleSubmit = () => {
-        console.log(" id  : ", id);
         let newTododata = todoData.map((data) => {
             if (data.id === id) {
                 data.title = editTitle;
@@ -49,9 +48,17 @@ const List = React.memo(({ id, completed, title, todoData, setTodoData, provided
                 </form>
 
                 <div className='items-center'>
-                    <button className='px-4 py-2 float-right' onClick={() => handleClick(id)}>x</button>
+                    <button
+                        className='px-1 my-2 float-right
+                            text-red-400 border-2 border-red-400 rounded hover:text-white
+                            hover:bg-red-400 hover:cursor-pointer'
+                        onClick={() => handleClick(id)}>x</button>
 
-                    <button className='px-4 py-2 float-right' type="submit" onClick={handleSubmit}>저장</button>
+                    <button
+                        className='px-1 my-2 mx-1 float-right
+                             text-blue-800 border-2 border-blue-800 rounded hover:text-white
+                            hover:bg-blue-800 hover:cursor-pointer'
+                        type="submit" onClick={handleSubmit}>저장</button>
                 </div>
             </div >
         );
@@ -75,9 +82,18 @@ const List = React.memo(({ id, completed, title, todoData, setTodoData, provided
                         <span className={`${completed ? "line-through" : undefined} px-2`}>{title}</span>
                     </div>
                     <div className='items-center'>
-                        <button className='px-4 py-2 float-right' onClick={() => handleClick(id)}>x</button>
+                        <button
+                            className='px-1 my-2 float-right
+                             text-red-400 border-2 border-red-400 rounded hover:text-white
+                            hover:bg-red-400 hover:cursor-pointer'
 
-                        <button className='px-4 py-2 float-right' onClick={() => setIsEditing(true)}>수정</button>
+                            onClick={() => handleClick(id)}>x</button>
+
+                        <button
+                            className='px-1 my-2 mx-1 float-right
+                             text-green-800 border-2 border-green-800 rounded hover:text-white
+                            hover:bg-green-800 hover:cursor-pointer'
+                            onClick={() => setIsEditing(true)}>수정</button>
                     </div>
                 </div>
             </div>

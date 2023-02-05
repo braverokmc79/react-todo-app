@@ -5,9 +5,6 @@ import List from './List';
 
 const Lists = React.memo(({ todoData, setTodoData }) => {
 
-    console.log("Lists :");
-
-
     const handleEnd = useCallback((result) => {
         //result 매개변수에는 source 항목 및 대상 위치와 같은 드래그 이벤트에 대한 정보가 포함됩니다.
         console.log("handleEnd : ", result);

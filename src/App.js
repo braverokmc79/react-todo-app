@@ -6,14 +6,13 @@ import Lists from "./components/Lists";
 const initialTodoData = localStorage.getItem("todoData") ? JSON.parse(localStorage.getItem("todoData")) : [];
 
 export default function App() {
-  console.log("App :");
 
   const [todoData, setTodoData] = useState(initialTodoData);
-
-
   const handleRemoveClick = useCallback(() => {
-    setTodoData([]);
-    localStorage.setItem("todoData", []);
+    if (window.confirm("정말 삭제 하시겠습니까?")) {
+      setTodoData([]);
+      localStorage.setItem("todoData", []);
+    };
   }, [setTodoData]);
 
 
@@ -24,7 +23,10 @@ export default function App() {
           <h1 className="justify-center text-2xl font-bold text-center">
             할일 목록
           </h1>
-          <button onClick={handleRemoveClick} >Delete All</button>
+          <button
+            className='p-2 text-red-400 border-2 border-red-400 rounded
+             hover:text-white hover:bg-red-400 hover:cursor-pointer'
+            onClick={handleRemoveClick} >전체삭제</button>
         </div>
 
         <Form todoData={todoData} setTodoData={setTodoData} />
