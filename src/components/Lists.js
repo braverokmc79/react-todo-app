@@ -24,12 +24,13 @@ const Lists = React.memo(({ todoData, setTodoData }) => {
         //원하는 자리에 reorderItem 을 insert 해줍니다.
         newTodoData.splice(result.destination.index, 0, reorderItem);
         setTodoData(newTodoData);
-
+        localStorage.setItem("todoData", JSON.stringify(newTodoData));
     }, [setTodoData, todoData]);
 
     const handleClick = useCallback((id) => {
         let newTodoData = todoData.filter(data => data.id !== id);
         setTodoData(newTodoData);
+        localStorage.setItem("todoData", JSON.stringify(newTodoData));
     }, [setTodoData, todoData]);
 
 

@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 
-const Form = ({ setTodoData }) => {
+const Form = ({ todoData, setTodoData }) => {
 
     const [value, setValue] = useState("");
     const handleChange = (e) => {
@@ -14,11 +14,11 @@ const Form = ({ setTodoData }) => {
             title: value,
             completed: false
         }
-        setTodoData(prev => [...prev, newTodoData])
+        setTodoData(prev => [...prev, newTodoData]);
+
+        localStorage.setItem("todoData", JSON.stringify([...todoData, newTodoData]));
         setValue("");
     };
-
-
 
 
     return (

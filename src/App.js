@@ -3,25 +3,17 @@ import "./App.css";
 import Form from "./components/Form";
 import Lists from "./components/Lists";
 
+const initialTodoData = localStorage.getItem("todoData") ? JSON.parse(localStorage.getItem("todoData")) : [];
+
 export default function App() {
   console.log("App :");
 
-  const [todoData, setTodoData] = useState([
-    {
-      id: 1,
-      title: "공부하기",
-      complete: false
-    },
-    {
-      id: 2,
-      title: "청소하기",
-      complete: true
-    },
+  const [todoData, setTodoData] = useState(initialTodoData);
 
-  ]);
 
   const handleRemoveClick = useCallback(() => {
     setTodoData([]);
+    localStorage.setItem("todoData", []);
   }, [setTodoData]);
 
 
@@ -35,7 +27,7 @@ export default function App() {
           <button onClick={handleRemoveClick} >Delete All</button>
         </div>
 
-        <Form setTodoData={setTodoData} />
+        <Form todoData={todoData} setTodoData={setTodoData} />
 
         <Lists todoData={todoData} setTodoData={setTodoData} />
 

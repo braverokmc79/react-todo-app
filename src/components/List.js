@@ -15,6 +15,8 @@ const List = React.memo(({ id, completed, title, todoData, setTodoData, provided
             return data;
         });
         setTodoData(newTodoData);
+
+        localStorage.setItem("todoData", JSON.stringify(newTodoData));
     }, [todoData, setTodoData]);
 
 
@@ -33,6 +35,7 @@ const List = React.memo(({ id, completed, title, todoData, setTodoData, provided
         });
 
         setTodoData(newTododata);
+        localStorage.setItem("todoData", JSON.stringify(newTododata));
         setIsEditing(false);
     };
 
