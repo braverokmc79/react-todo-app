@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 const Form = ({ setTodoData }) => {
 
-    console.log("Form :");
-
     const [value, setValue] = useState("");
-    const handleChnage = (e) => {
+    const handleChange = (e) => {
         setValue(e.target.value);
     }
 
@@ -16,10 +14,12 @@ const Form = ({ setTodoData }) => {
             title: value,
             completed: false
         }
-
         setTodoData(prev => [...prev, newTodoData])
         setValue("");
-    }
+    };
+
+
+
 
     return (
         <>
@@ -30,7 +30,7 @@ const Form = ({ setTodoData }) => {
                     name="value"
                     placeholder="해야 할일을 입력 하세요."
                     value={value}
-                    onChange={handleChnage}
+                    onChange={handleChange}
                 />
 
                 <input
