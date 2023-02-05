@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
 const Form = ({ setTodoData }) => {
-    const [value, setValue] = useState("");
 
+    console.log("Form :");
+
+    const [value, setValue] = useState("");
     const handleChnage = (e) => {
         setValue(e.target.value);
     }
