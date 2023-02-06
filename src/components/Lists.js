@@ -7,7 +7,7 @@ const Lists = React.memo(({ todoData, setTodoData }) => {
 
     const handleEnd = useCallback((result) => {
         //result 매개변수에는 source 항목 및 대상 위치와 같은 드래그 이벤트에 대한 정보가 포함됩니다.
-        console.log("handleEnd : ", result);
+        //console.log("handleEnd : ", result);
         //목적지가 없으면(이벤트 취소) 이 함수를 종료합니다.
         if (!result.destination) return;
 
